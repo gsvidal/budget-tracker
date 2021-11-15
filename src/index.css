@@ -3,8 +3,8 @@
 }
 body {
   background: #000428;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #004e92, #000428);  
-  background: linear-gradient(to right, #004e92, #000428); 
+  background: -webkit-linear-gradient(to right, #00300b, #007a1b);  
+  background: linear-gradient(to right, #00925a, #00300b); 
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -13,14 +13,16 @@ header {
   margin: 30px 0;
 }
 .content {
-  padding:20px;
+  padding: 20px;
   margin: 0 auto;
-  /* max-width: 500px; */
 }
 .content-principal {
-  background-color: white;
+  background-color: rgb(253, 245, 232);
   padding: 30px;
   border-radius: 20px;
+}
+input:not([type="submit"]) {
+  outline: 1px solid rgb(179, 0, 179);
 }
 .budget p{
   margin-bottom: 0;
@@ -42,7 +44,7 @@ h1 {
 h2 {
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
-  color:#004e92;
+  color:#380092;
   margin-bottom:30px;
   font-size:3rem!important;
   text-align: center;
@@ -61,9 +63,9 @@ h2 {
   border-radius: .25rem;
 }
 .alert-primary {
-  color: #004085;
-  background-color: #cce5ff;
-  border-color: #b8daff;
+  color: #000d85;
+  background-color: #cccdff;
+  border-color: #b8bdff;
 }
 .alert-success {
   color: #155724;
@@ -99,7 +101,8 @@ h2 {
   margin:0;
 }
 .expenses-incurred li p .expense {
-  background-color: #004085;
+  background-color: #4d00dd;
   padding: 1rem;
   color:white;
+  border-radius: 4px;
 }
