@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import Error from './Error';
+import { nanoid } from 'nanoid';
 
-const Form = () => {
+const Form = ({ setExpense, setCreateExpense }) => {
 
   const [ expenseName, setExpenseName ] = useState("");
   const [ expenseAmount, setExpenseAmount ] = useState("");
   const [ error, setError ] = useState(false);
 
   // User add an expense
-  const setExpense = (event) => {
+  const addExpense = (event) => {
     event.preventDefault();
 
     // Validate
@@ -20,18 +21,24 @@ const Form = () => {
     setError(false);
 
     // Made the expense
-    
+    const expense = {
+      id: nanoid(),
+      expenseName,
+      expenseAmount
+    }
 
     // send expense to App component
-
+    setExpense(expense);
+    setCreateExpense(true);
 
     // Reset form component 
-
+    setExpenseName("");
+    setExpenseAmount("");
   }
 
   return(
     <form action=""
-      onSubmit={setExpense}
+      onSubmit={addExpense}
     >
       <h2>Insert your expenses here</h2>
       { error && 
