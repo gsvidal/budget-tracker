@@ -1,42 +1,45 @@
 import React, { Fragment, useState } from 'react';
 import Error from './Error';
 
-const Budget = () => {
+const Amount = ({ setBudget, setRemaining, setShowAmount }) => {
 
   // Define state
-  const [ budget, saveBudget ] = useState(0);
+  const [ amount, saveAmount ] = useState(0);
   const [ error, setError ] = useState(false);
 
   // function that reads budget
-  const defineBudget = event => {
-    saveBudget(parseInt(event.target.value,10));
+  const defineAmount = event => {
+    saveAmount(parseInt(event.target.value,10));
   }
 
   // Submit to set the budget
-  const setBudget = event => {
+  const setAmount = event => {
     event.preventDefault();
 
     // Budget input validation (positive number)
-    if(budget <= 0 || isNaN(budget)) {
+    if(amount <= 0 || isNaN(amount)) {
       setError(true);
       return;
     }
 
     // In case validation is true
     setError(false);
+    setBudget(amount);
+    setRemaining(amount);
+    setShowAmount(false)
   }
 
   return(
     <Fragment>
-      <h2>Enter your budget</h2>
+      <h2>Enter your budget amount</h2>
       { error && <Error message="Invalid Budget" /> }
       <form action=""
-        onSubmit={setBudget}>
+        onSubmit={setAmount}>
         <input
           type="number"
           className="u-full-width"
           placeholder="Enter your budget: 500"
-          onChange={defineBudget}
+          onChange={defineAmount}
         />
         <input
           type="submit"
@@ -48,4 +51,4 @@ const Budget = () => {
   );
 }
 
-export default Budget;
+export default Amount;
