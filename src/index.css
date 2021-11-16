@@ -107,3 +107,11 @@ h2 {
   color:white;
   border-radius: 4px;
 }
+.column.error-diff {
+  margin: 0;
+}
+.column .error-diff {
+  text-align: center;
+  background-color: #ffbbc1;
+  border-color: #fc9ba4;
+}

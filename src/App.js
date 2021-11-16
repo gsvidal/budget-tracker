@@ -4,6 +4,7 @@ import Amount from './components/Amount';
 import Form from './components/Form';
 import List from './components/List';
 import BudgetControl from './components/BudgetControl';
+import Error from './components/Error';
 
 function App() {
 
@@ -13,21 +14,26 @@ function App() {
   const [ showAmount, setShowAmount ] = useState(true);
   const [ expenses, setExpenses ] = useState([]);
   const [ expense, setExpense ] = useState({});
-  const [ createExpense, setCreateExpense ] = useState(false)
+  const [ createExpense, setCreateExpense ] = useState(false);
+  const [ errorDiff, setErrorDiff ] = useState(false);
 
   useEffect(() => {
     if(createExpense) {
+      if(expense.expenseAmount <= remaining ) {
       // Add new budget
       setExpenses([
         ...expenses,
         expense
       ]);
       // Substract from current budget
-      const budgetRemaining = remaining - expense.expenseAmount;
-      setRemaining(budgetRemaining);
-
-      // Reset to false
+        const budgetRemaining = remaining - expense.expenseAmount;
+        setRemaining(budgetRemaining); 
+        // Reset to false
       setCreateExpense(false);
+      } else {
+        setErrorDiff(true);
+        // setCreateExpense(true);
+      }
     }
   }, [expense, createExpense, expenses, remaining])
 
@@ -49,6 +55,7 @@ function App() {
                 <Form 
                   setExpense={setExpense}
                   setCreateExpense={setCreateExpense}
+                  setErrorDiff={setErrorDiff}
                 />
               </div>
               <div className="one-half column">
@@ -59,6 +66,13 @@ function App() {
                   budget={budget}
                   remaining={remaining}
                 />
+              </div>
+              <div className="column error-diff">
+              { errorDiff &&
+                <Error
+                  message="You can not spend more than you have left !!!"
+                />
+              }
               </div>
             </div>
           }

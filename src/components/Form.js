@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Error from './Error';
 import { nanoid } from 'nanoid';
 
-const Form = ({ setExpense, setCreateExpense }) => {
+const Form = ({ setExpense, setCreateExpense, setErrorDiff }) => {
 
   const [ expenseName, setExpenseName ] = useState("");
   const [ expenseAmount, setExpenseAmount ] = useState("");
@@ -33,8 +33,11 @@ const Form = ({ setExpense, setCreateExpense }) => {
     setCreateExpense(true);
 
     // Reset form component 
-    setExpenseName("");
-    setExpenseAmount("");
+    if(!setErrorDiff){
+      setExpenseName("");
+      setExpenseAmount("");
+    }
+    
   }
 
   return(
