@@ -1,5 +1,23 @@
-# budget-tracker
-React Budget Tracker App
+# Budget Tracker
+<a href="https://www.gonzalovidal.dev/budget-tracker/">
+  <img src="https://i.postimg.cc/gk1PtPHK/budgettracker.png">
+</a> 
+
+A React App where you can set your budget then list your expenses and see when you're running out of money, it will output a color state (warning or danger) when you surpass a certain percentage of your total budget in expenses.
+
+## Technologies used:
+
+- Create React App.
+
+- Documented with Prop Types.
+
+## Features:
+
+- Three color states: green/yellow/red ( depends on how much you've already spent):
+
+- Sends you an alert if you want to expense more than you've left
+
+<hr />
 
 # Getting Started with Create React App
 
